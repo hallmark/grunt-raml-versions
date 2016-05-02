@@ -30,56 +30,56 @@ grunt.initConfig({
   raml_versions: {
     options: {
       // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    }
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+#### options.patterns
+Type: `Object`
+Default value: `{}`
+
+A set of patterns. For each pattern:
+1. The key should match the destination for a raml2[nnn] task.
+2. The value should represent the _versioned_ file path. The version will be read from the original
+RAML file (i.e. the source in the original task). Then, the version will be inserted
+into the _versioned_ file path, in the place specified by the pattern: `${=version}`
+
+#### options.relatedTask
 Type: `String`
-Default value: `',  '`
+Default value: `'raml2html'`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+The name of the initial raml2[nnn] task.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Node.js API Versioned Docs
+The Node.js Foundation hosts its API documentation using the
+following pattern:
+* The latest API docs are hosted at:
+  * https://nodejs.org/api/
+* A given version of the API docs can always be directly specified. For example:
+  * https://nodejs.org/docs/v0.12.13/api/
+
+In this example, the `raml2html` task will generate the HTML documentation at the default, "latest" location. Then, the `raml_versions` task will make a copy to the versioned path, matching the Node.js versioning scheme.
 
 ```js
 grunt.initConfig({
-  raml_versions: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+  raml2html: {
+    all: {
+      files: {
+        './build/api/index.html': ['./my-api.raml']
+      }
+    }
   },
-});
-```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
   raml_versions: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      patterns: {
+        './build/api/index.html': './build/docs/${=version}/api/index.html'
+      }
     },
   },
 });
