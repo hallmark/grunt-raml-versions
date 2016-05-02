@@ -28,22 +28,19 @@ module.exports = function(grunt) {
       tests: ['tmp']
     },
 
+    raml2html: {
+      all: {
+        files: {
+          './tmp/docs/index.html': ['test/fixtures/test.raml']
+        }
+      }
+    },
+
     // Configuration to be run (and then tested).
     raml_versions: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+      options: {
+        patterns: {
+          './tmp/docs/index.html': './tmp/docs/${=version}/api/index.html'
         }
       }
     },
@@ -62,10 +59,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-raml2html');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'raml_versions', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'raml2html', 'raml_versions', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

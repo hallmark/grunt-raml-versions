@@ -1,0 +1,10 @@
+#%RAML 0.8
+
+title: Test API
+baseUri: http://api.example.com/{version}
+version: v0.7
+/tests:
+  get:
+    queryParameters:
+      caseId:
+        description: the test case ID
