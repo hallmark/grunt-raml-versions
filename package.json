@@ -1,28 +1,21 @@
 {
   "name": "grunt-raml-versions",
-  "description": "Make versioned copies of docs generated from RAML.",
+  "description": "Make versioned copies of docs generated from RAML",
   "version": "0.1.0",
   "homepage": "https://github.com/hallmark/grunt-raml-versions",
   "author": {
     "name": "Mark Ture",
     "email": "mark.ture@gmail.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hallmark/grunt-raml-versions.git"
-  },
+  "repository": "hallmark/grunt-raml-versions",
   "bugs": {
     "url": "https://github.com/hallmark/grunt-raml-versions/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/hallmark/grunt-raml-versions/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license" : "MIT",
   "engines": {
     "node": ">= 0.10.0"
   },
+  "main": "tasks/raml-versions.js",
   "scripts": {
     "test": "grunt test"
   },
@@ -33,6 +26,11 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "raml",
+    "raml2html"
+  ],
+  "files": [
+    "tasks"
   ]
 }
