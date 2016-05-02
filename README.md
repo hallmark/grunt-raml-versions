@@ -1,4 +1,4 @@
-# grunt-raml-versions
+# grunt-raml-versions [![Build Status](https://travis-ci.org/hallmark/grunt-raml-versions.svg?branch=master)](https://travis-ci.org/hallmark/grunt-raml-versions)
 
 > Make versioned copies of docs generated from RAML.
 
