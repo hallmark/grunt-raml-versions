@@ -31,7 +31,8 @@ module.exports = function(grunt) {
   grunt.registerTask('raml_versions', 'Make versioned copies of docs generated from RAML.', function(target) {
     // Merge task-specific options with these defaults.
     var options = this.options({
-      relatedTask: 'raml2html'
+      relatedTask: 'raml2html',
+      patterns: {}
     });
 
     grunt.log.ok('Making versioned copies of output files for related RAML task: ' + options.relatedTask);
