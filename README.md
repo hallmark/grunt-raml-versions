@@ -2,6 +2,9 @@
 
 > Make versioned copies of docs generated from RAML.
 
+## WARNING
+:heavy_exclamation_mark::heavy_exclamation_mark: This plugin is experimental quality! Use with caution, until it has gone through additional testing and reached v1.0.0.
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
